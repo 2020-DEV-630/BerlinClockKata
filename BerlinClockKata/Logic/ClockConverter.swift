@@ -7,6 +7,7 @@ protocol ClockConverterType {
 
 struct ClockConverter: ClockConverterType {
     static let singleMinuteLampCount = 4
+    static let fiveMinuteLampCount = 11
     
     func singleMinutes(for date: Date) -> String {
         let calendar = Calendar.current
@@ -23,6 +24,16 @@ struct ClockConverter: ClockConverterType {
     }
     
     func fiveMinutes(for date: Date) -> String {
-        return "OOOOOOOOOOO"
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.minute], from: date)
+        
+        guard let minutes = dateComponents.minute else {
+            preconditionFailure("date has no minutes")
+        }
+        
+        let fiveMinuteCount = minutes / (ClockConverter.singleMinuteLampCount + 1)
+        
+        return String(repeating: "Y", count: fiveMinuteCount)
+            + String(repeating: "O", count: ClockConverter.fiveMinuteLampCount - fiveMinuteCount)
     }
 }

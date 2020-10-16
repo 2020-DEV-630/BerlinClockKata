@@ -47,6 +47,12 @@ class ClockConverterTests: XCTestCase {
         let fiveMinutes = sut.fiveMinutes(for: zeroDate)
         XCTAssertEqual(fiveMinutes, "OOOOOOOOOOO")
     }
+    
+    func testFiveMinutesWithLowValue() {
+        let lowValue = makeDateWithTime(hours: 0, minutes: 12, seconds: 0)
+        let fiveMinutes = sut.fiveMinutes(for: lowValue)
+        XCTAssertEqual(fiveMinutes, "YYOOOOOOOOO")
+    }
 }
 
 extension ClockConverterTests {
