@@ -15,6 +15,8 @@
 		CF8689FD25399ACD007820AB /* ClockConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8689FC25399ACD007820AB /* ClockConverterTests.swift */; };
 		CF868A042539A135007820AB /* ClockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A032539A135007820AB /* ClockViewModel.swift */; };
 		CF868A0A2539A3B0007820AB /* ClockViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A092539A3B0007820AB /* ClockViewModelTests.swift */; };
+		CF868A0F2539A7C1007820AB /* LampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A0E2539A7C1007820AB /* LampView.swift */; };
+		CF868A152539A826007820AB /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A142539A826007820AB /* ViewConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		CF8689FC25399ACD007820AB /* ClockConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockConverterTests.swift; sourceTree = "<group>"; };
 		CF868A032539A135007820AB /* ClockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModel.swift; sourceTree = "<group>"; };
 		CF868A092539A3B0007820AB /* ClockViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModelTests.swift; sourceTree = "<group>"; };
+		CF868A0E2539A7C1007820AB /* LampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampView.swift; sourceTree = "<group>"; };
+		CF868A142539A826007820AB /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 		CF8689A22539957D007820AB /* BerlinClockKata */ = {
 			isa = PBXGroup;
 			children = (
+				CF868A0D2539A79C007820AB /* View */,
 				CF868A022539A125007820AB /* ViewModel */,
 				CF8689F525399A98007820AB /* Logic */,
 				CF8689A32539957D007820AB /* BerlinClockKataApp.swift */,
@@ -124,6 +129,15 @@
 				CF868A032539A135007820AB /* ClockViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CF868A0D2539A79C007820AB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF868A0E2539A7C1007820AB /* LampView.swift */,
+				CF868A142539A826007820AB /* ViewConstants.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +239,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF868A152539A826007820AB /* ViewConstants.swift in Sources */,
 				CF8689A62539957D007820AB /* ContentView.swift in Sources */,
 				CF8689A42539957D007820AB /* BerlinClockKataApp.swift in Sources */,
+				CF868A0F2539A7C1007820AB /* LampView.swift in Sources */,
 				CF8689F725399AA4007820AB /* ClockConverter.swift in Sources */,
 				CF868A042539A135007820AB /* ClockViewModel.swift in Sources */,
 			);
