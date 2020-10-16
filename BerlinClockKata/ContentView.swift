@@ -7,6 +7,12 @@ struct ContentView: View {
     var body: some View {
         VStack {
             HStack {
+                ForEach(viewModel.singleMinutes.indices, id: \.self) {
+                    LampView(lampColour: $viewModel.singleHours[$0])
+                        .frame(height: ViewConstants.lampHeight)
+                }
+            }
+            HStack {
                 ForEach(viewModel.fiveMinutes.indices, id: \.self) {
                     LampView(lampColour: $viewModel.fiveMinutes[$0])
                         .frame(height: ViewConstants.lampHeight)
