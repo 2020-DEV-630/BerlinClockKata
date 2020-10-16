@@ -41,4 +41,8 @@ struct ClockConverter: ClockConverterType {
             return (index + 1) % 3 == 0 ? "R": "Y"
         }.joined()
     }
+    
+    func singleHours(for date: Date) -> String {
+        return "OOOO"
+    }
 }
