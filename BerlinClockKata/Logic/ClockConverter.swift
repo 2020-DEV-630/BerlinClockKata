@@ -14,14 +14,19 @@ struct ClockConverter: ClockConverterType {
     static let singleHourLampCount = 4
     static let fiveHourLampCount = 4
     
-    func singleMinutes(for date: Date) -> String {
+    private func dateComponent(_ component: Calendar.Component, from date: Date) -> Int {
         let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.minute], from: date)
+        let dateComponents = calendar.dateComponents([component], from: date)
         
-        guard let minutes = dateComponents.minute else {
-            preconditionFailure("date has no minutes")
+        guard let componentValue = dateComponents.value(for: component) else {
+            preconditionFailure("date has no \(component)")
         }
-        
+
+        return componentValue
+    }
+    
+    func singleMinutes(for date: Date) -> String {
+        let minutes = dateComponent(.minute, from: date)
         let singleMinuteCount = minutes % (ClockConverter.singleMinuteLampCount + 1)
         
         return String(repeating: "Y", count: singleMinuteCount)
@@ -29,13 +34,7 @@ struct ClockConverter: ClockConverterType {
     }
     
     func fiveMinutes(for date: Date) -> String {
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.minute], from: date)
-        
-        guard let minutes = dateComponents.minute else {
-            preconditionFailure("date has no minutes")
-        }
-        
+        let minutes = dateComponent(.minute, from: date)
         let fiveMinuteCount = minutes / (ClockConverter.singleMinuteLampCount + 1)
         
         return (0..<ClockConverter.fiveMinuteLampCount).map { index -> String in
@@ -48,13 +47,7 @@ struct ClockConverter: ClockConverterType {
     }
     
     func singleHours(for date: Date) -> String {
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.hour], from: date)
-        
-        guard let hours = dateComponents.hour else {
-            preconditionFailure("date has no hours")
-        }
-        
+        let hours = dateComponent(.hour, from: date)
         let singleHourCount = hours % (ClockConverter.singleHourLampCount + 1)
         
         return String(repeating: "R", count: singleHourCount)
@@ -62,13 +55,7 @@ struct ClockConverter: ClockConverterType {
     }
     
     func fiveHours(for date: Date) -> String {
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.hour], from: date)
-        
-        guard let hours = dateComponents.hour else {
-            preconditionFailure("date has no hours")
-        }
-        
+        let hours = dateComponent(.hour, from: date)
         let fiveHourCount = hours / (ClockConverter.singleHourLampCount + 1)
         
         return String(repeating: "R", count: fiveHourCount)
@@ -76,13 +63,7 @@ struct ClockConverter: ClockConverterType {
     }
     
     func seconds(for date: Date) -> String {
-        let calendar = Calendar.current
-        let dateComponents = calendar.dateComponents([.second], from: date)
-        
-        guard let seconds = dateComponents.second else {
-            preconditionFailure("date has no seconds")
-        }
-        
+        let seconds = dateComponent(.second, from: date)
         return seconds % 2 == 0 ? "Y" : "O"
     }
 }
