@@ -5,10 +5,18 @@ struct ContentView: View {
     @ObservedObject var viewModel: ClockViewModel
     
     var body: some View {
-        HStack {
-            ForEach(viewModel.singleMinutes.indices, id: \.self) {
-                LampView(lampColour: $viewModel.singleMinutes[$0])
-                    .frame(height: ViewConstants.lampHeight)
+        VStack {
+            HStack {
+                ForEach(viewModel.fiveMinutes.indices, id: \.self) {
+                    LampView(lampColour: $viewModel.fiveMinutes[$0])
+                        .frame(height: ViewConstants.lampHeight)
+                }
+            }
+            HStack {
+                ForEach(viewModel.singleMinutes.indices, id: \.self) {
+                    LampView(lampColour: $viewModel.singleMinutes[$0])
+                        .frame(height: ViewConstants.lampHeight)
+                }
             }
         }
         .padding(.horizontal, 20)
