@@ -8,30 +8,10 @@ struct ContentView: View {
         VStack {
             CircularLampView(lampColour: $viewModel.seconds)
                 .frame(height: ViewConstants.circularLampHeight)
-            HStack {
-                ForEach(viewModel.fiveHours.indices, id: \.self) {
-                    LampView(lampColour: $viewModel.fiveHours[$0])
-                        .frame(height: ViewConstants.lampHeight)
-                }
-            }
-            HStack {
-                ForEach(viewModel.singleHours.indices, id: \.self) {
-                    LampView(lampColour: $viewModel.singleHours[$0])
-                        .frame(height: ViewConstants.lampHeight)
-                }
-            }
-            HStack {
-                ForEach(viewModel.fiveMinutes.indices, id: \.self) {
-                    LampView(lampColour: $viewModel.fiveMinutes[$0])
-                        .frame(height: ViewConstants.lampHeight)
-                }
-            }
-            HStack {
-                ForEach(viewModel.singleMinutes.indices, id: \.self) {
-                    LampView(lampColour: $viewModel.singleMinutes[$0])
-                        .frame(height: ViewConstants.lampHeight)
-                }
-            }
+            LampRowView(lampColours: $viewModel.fiveHours)
+            LampRowView(lampColours: $viewModel.singleHours)
+            LampRowView(lampColours: $viewModel.fiveMinutes)
+            LampRowView(lampColours: $viewModel.singleMinutes)
         }
         .padding(.horizontal, 20)
     }

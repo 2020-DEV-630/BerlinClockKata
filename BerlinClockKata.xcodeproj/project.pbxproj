@@ -18,6 +18,7 @@
 		CF868A0F2539A7C1007820AB /* LampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A0E2539A7C1007820AB /* LampView.swift */; };
 		CF868A152539A826007820AB /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A142539A826007820AB /* ViewConstants.swift */; };
 		CF868A1B2539C009007820AB /* CircularLampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A1A2539C009007820AB /* CircularLampView.swift */; };
+		CF868A232539C281007820AB /* LampRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A222539C281007820AB /* LampRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		CF868A0E2539A7C1007820AB /* LampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampView.swift; sourceTree = "<group>"; };
 		CF868A142539A826007820AB /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
 		CF868A1A2539C009007820AB /* CircularLampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLampView.swift; sourceTree = "<group>"; };
+		CF868A222539C281007820AB /* LampRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				CF868A0E2539A7C1007820AB /* LampView.swift */,
 				CF868A142539A826007820AB /* ViewConstants.swift */,
 				CF868A1A2539C009007820AB /* CircularLampView.swift */,
+				CF868A222539C281007820AB /* LampRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF868A152539A826007820AB /* ViewConstants.swift in Sources */,
+				CF868A232539C281007820AB /* LampRowView.swift in Sources */,
 				CF8689A62539957D007820AB /* ContentView.swift in Sources */,
 				CF868A1B2539C009007820AB /* CircularLampView.swift in Sources */,
 				CF8689A42539957D007820AB /* BerlinClockKataApp.swift in Sources */,
