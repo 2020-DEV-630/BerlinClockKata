@@ -6,6 +6,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            CircularLampView(lampColour: $viewModel.seconds)
+                .frame(height: ViewConstants.circularLampHeight)
             HStack {
                 ForEach(viewModel.fiveHours.indices, id: \.self) {
                     LampView(lampColour: $viewModel.fiveHours[$0])

@@ -17,6 +17,7 @@
 		CF868A0A2539A3B0007820AB /* ClockViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A092539A3B0007820AB /* ClockViewModelTests.swift */; };
 		CF868A0F2539A7C1007820AB /* LampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A0E2539A7C1007820AB /* LampView.swift */; };
 		CF868A152539A826007820AB /* ViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A142539A826007820AB /* ViewConstants.swift */; };
+		CF868A1B2539C009007820AB /* CircularLampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF868A1A2539C009007820AB /* CircularLampView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		CF868A092539A3B0007820AB /* ClockViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewModelTests.swift; sourceTree = "<group>"; };
 		CF868A0E2539A7C1007820AB /* LampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LampView.swift; sourceTree = "<group>"; };
 		CF868A142539A826007820AB /* ViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConstants.swift; sourceTree = "<group>"; };
+		CF868A1A2539C009007820AB /* CircularLampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularLampView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				CF868A0E2539A7C1007820AB /* LampView.swift */,
 				CF868A142539A826007820AB /* ViewConstants.swift */,
+				CF868A1A2539C009007820AB /* CircularLampView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 			files = (
 				CF868A152539A826007820AB /* ViewConstants.swift in Sources */,
 				CF8689A62539957D007820AB /* ContentView.swift in Sources */,
+				CF868A1B2539C009007820AB /* CircularLampView.swift in Sources */,
 				CF8689A42539957D007820AB /* BerlinClockKataApp.swift in Sources */,
 				CF868A0F2539A7C1007820AB /* LampView.swift in Sources */,
 				CF8689F725399AA4007820AB /* ClockConverter.swift in Sources */,
