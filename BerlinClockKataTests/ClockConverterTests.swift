@@ -83,6 +83,30 @@ class ClockConverterTests: XCTestCase {
         let singleHours = sut.singleHours(for: zeroDate)
         XCTAssertEqual(singleHours, "OOOO")
     }
+    
+    func testSingleHoursWithNonZeroValues() {
+        let testDates = [
+            makeDateWithTime(hours: 23, minutes: 59, seconds: 59),
+            makeDateWithTime(hours: 2, minutes: 4, seconds: 0),
+            makeDateWithTime(hours: 8, minutes: 23, seconds: 0),
+            makeDateWithTime(hours: 14, minutes: 35, seconds: 0),
+        ]
+        
+        let singleHourValues = testDates.map {
+            sut.singleHours(for: $0)
+        }
+        
+        let expectedOutputs = [
+            "RRRO",
+            "RROO",
+            "RRRO",
+            "RRRR",
+        ]
+        
+        for (actualOutput, expectedOutput) in zip(singleHourValues, expectedOutputs) {
+            XCTAssertEqual(actualOutput, expectedOutput)
+        }
+    }
 }
 
 extension ClockConverterTests {
