@@ -25,12 +25,15 @@ struct ClockConverter: ClockConverterType {
         return componentValue
     }
     
+    private func clockString(count: Int, outOf totalCount: Int, onValue: String, offValue: String = "O") -> String {
+        return String(repeating: onValue, count: count)
+            + String(repeating: offValue, count: totalCount - count)
+    }
+    
     func singleMinutes(for date: Date) -> String {
         let minutes = dateComponent(.minute, from: date)
         let singleMinuteCount = minutes % (ClockConverter.singleMinuteLampCount + 1)
-        
-        return String(repeating: "Y", count: singleMinuteCount)
-            + String(repeating: "O", count: ClockConverter.singleMinuteLampCount - singleMinuteCount)
+        return clockString(count: singleMinuteCount, outOf: ClockConverter.singleMinuteLampCount, onValue: "Y")
     }
     
     func fiveMinutes(for date: Date) -> String {
@@ -49,17 +52,13 @@ struct ClockConverter: ClockConverterType {
     func singleHours(for date: Date) -> String {
         let hours = dateComponent(.hour, from: date)
         let singleHourCount = hours % (ClockConverter.singleHourLampCount + 1)
-        
-        return String(repeating: "R", count: singleHourCount)
-            + String(repeating: "O", count: ClockConverter.singleHourLampCount - singleHourCount)
+        return clockString(count: singleHourCount, outOf: ClockConverter.singleHourLampCount, onValue: "R")
     }
     
     func fiveHours(for date: Date) -> String {
         let hours = dateComponent(.hour, from: date)
         let fiveHourCount = hours / (ClockConverter.singleHourLampCount + 1)
-        
-        return String(repeating: "R", count: fiveHourCount)
-            + String(repeating: "O", count: ClockConverter.fiveHourLampCount - fiveHourCount)
+        return clockString(count: fiveHourCount, outOf: ClockConverter.fiveHourLampCount, onValue: "R")
     }
     
     func seconds(for date: Date) -> String {
