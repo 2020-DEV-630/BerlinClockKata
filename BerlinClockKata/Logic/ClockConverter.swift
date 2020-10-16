@@ -10,6 +10,7 @@ struct ClockConverter: ClockConverterType {
     static let singleMinuteLampCount = 4
     static let fiveMinuteLampCount = 11
     static let singleHourLampCount = 4
+    static let fiveHourLampCount = 4
     
     func singleMinutes(for date: Date) -> String {
         let calendar = Calendar.current
@@ -59,6 +60,16 @@ struct ClockConverter: ClockConverterType {
     }
     
     func fiveHours(for date: Date) -> String {
-        return "OOOO"
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.hour], from: date)
+        
+        guard let hours = dateComponents.hour else {
+            preconditionFailure("date has no hours")
+        }
+        
+        let fiveHourCount = hours / (ClockConverter.singleHourLampCount + 1)
+        
+        return String(repeating: "R", count: fiveHourCount)
+            + String(repeating: "O", count: ClockConverter.fiveHourLampCount - fiveHourCount)
     }
 }
