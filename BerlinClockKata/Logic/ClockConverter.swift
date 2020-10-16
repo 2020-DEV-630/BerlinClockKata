@@ -33,7 +33,12 @@ struct ClockConverter: ClockConverterType {
         
         let fiveMinuteCount = minutes / (ClockConverter.singleMinuteLampCount + 1)
         
-        return String(repeating: "Y", count: fiveMinuteCount)
-            + String(repeating: "O", count: ClockConverter.fiveMinuteLampCount - fiveMinuteCount)
+        return (0..<ClockConverter.fiveMinuteLampCount).map { index -> String in
+            guard index < fiveMinuteCount else {
+                return "O"
+            }
+            
+            return (index + 1) % 3 == 0 ? "R": "Y"
+        }.joined()
     }
 }
