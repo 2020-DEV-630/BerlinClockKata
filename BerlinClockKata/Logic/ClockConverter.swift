@@ -5,6 +5,7 @@ protocol ClockConverterType {
     func fiveMinutes(for date: Date) -> String
     func singleHours(for date: Date) -> String
     func fiveHours(for date: Date) -> String
+    func seconds(for date: Date) -> String
 }
 
 struct ClockConverter: ClockConverterType {

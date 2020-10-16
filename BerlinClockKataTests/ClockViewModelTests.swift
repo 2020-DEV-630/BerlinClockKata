@@ -20,6 +20,10 @@ struct MockClockConverter: ClockConverterType {
     func fiveHours(for date: Date) -> String {
         return stringToReturn
     }
+    
+    func seconds(for date: Date) -> String {
+        return stringToReturn
+    }
 }
 
 class ClockViewModelTests: XCTestCase {
@@ -103,4 +107,19 @@ class ClockViewModelTests: XCTestCase {
         }
     }
 
+    func testSecondsWithOffValue() {
+        clockConverter.stringToReturn = "O"
+        sut.set(with: Just<Date>(Date()).eraseToAnyPublisher())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertEqual(self.sut.seconds, .off)
+        }
+    }
+    
+    func testSecondsWithOnValue() {
+        clockConverter.stringToReturn = "Y"
+        sut.set(with: Just<Date>(Date()).eraseToAnyPublisher())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertEqual(self.sut.seconds, .yellow)
+        }
+    }
 }

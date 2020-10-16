@@ -15,6 +15,7 @@ class ClockViewModel: ObservableObject {
     @Published var fiveMinutes: [LampColour] = []
     @Published var singleHours: [LampColour] = []
     @Published var fiveHours: [LampColour] = []
+    @Published var seconds: LampColour = .off
     
     init(converter: ClockConverterType) {
         self.clockConverter = converter
@@ -34,6 +35,8 @@ class ClockViewModel: ObservableObject {
             self.singleHours = singleHoursString.map { LampColour(rawValue: $0) ?? .off }
             let fiveHoursString = self.clockConverter.fiveHours(for: date)
             self.fiveHours = fiveHoursString.map { LampColour(rawValue: $0) ?? .off }
+            let secondsString = self.clockConverter.seconds(for: date)
+            self.seconds = secondsString.map { LampColour(rawValue: $0) ?? .off }.first ?? .off
         }
     }
 }
