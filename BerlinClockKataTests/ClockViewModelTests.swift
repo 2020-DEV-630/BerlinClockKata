@@ -16,6 +16,10 @@ struct MockClockConverter: ClockConverterType {
     func singleHours(for date: Date) -> String {
         return stringToReturn
     }
+    
+    func fiveHours(for date: Date) -> String {
+        return stringToReturn
+    }
 }
 
 class ClockViewModelTests: XCTestCase {
@@ -79,6 +83,23 @@ class ClockViewModelTests: XCTestCase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             let expectedOutputs: [LampColour] = [.red, .red, .off, .off]
             XCTAssertEqual(self.sut.singleHours, expectedOutputs)
+        }
+    }
+    
+    func testFiveHoursWithOffValues() {
+        clockConverter.stringToReturn = "OOOO"
+        sut.set(with: Just<Date>(Date()).eraseToAnyPublisher())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertEqual(self.sut.fiveHours, [LampColour](repeating: .off, count: 4))
+        }
+    }
+    
+    func testFiveHoursWithMixedValues() {
+        clockConverter.stringToReturn = "RROO"
+        sut.set(with: Just<Date>(Date()).eraseToAnyPublisher())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            let expectedOutputs: [LampColour] = [.red, .red, .off, .off]
+            XCTAssertEqual(self.sut.fiveHours, expectedOutputs)
         }
     }
 
