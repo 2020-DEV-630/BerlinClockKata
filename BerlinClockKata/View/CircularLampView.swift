@@ -8,7 +8,7 @@ struct CircularLampView: View {
             .foregroundColor(ViewConstants.colour(for: lampColour))
             .overlay(
                 Circle()
-                    .stroke()
+                    .stroke(lineWidth: ViewConstants.borderWidth)
             )
     }
 }

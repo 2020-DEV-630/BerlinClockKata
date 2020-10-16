@@ -8,7 +8,7 @@ struct LampView: View {
             .foregroundColor(ViewConstants.colour(for: lampColour))
             .overlay(
                 RoundedRectangle(cornerRadius: ViewConstants.cornerRadius)
-                    .stroke()
+                    .stroke(lineWidth: ViewConstants.borderWidth)
             )
     }
 }
