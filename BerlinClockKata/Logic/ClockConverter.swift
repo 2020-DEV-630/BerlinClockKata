@@ -1,6 +1,10 @@
 import Foundation
 
-struct ClockConverter {
+protocol ClockConverterType {
+    func singleMinutes(for date: Date) -> String
+}
+
+struct ClockConverter: ClockConverterType {
     static let singleMinuteLampCount = 4
     
     func singleMinutes(for date: Date) -> String {
