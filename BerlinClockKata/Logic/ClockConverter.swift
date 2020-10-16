@@ -57,4 +57,8 @@ struct ClockConverter: ClockConverterType {
         return String(repeating: "R", count: singleHourCount)
             + String(repeating: "O", count: ClockConverter.singleHourLampCount - singleHourCount)
     }
+    
+    func fiveHours(for date: Date) -> String {
+        return "OOOO"
+    }
 }
