@@ -43,5 +43,22 @@ class ClockViewModelTests: XCTestCase {
             XCTAssertEqual(self.sut.singleMinutes, expectedOutputs)
         }
     }
+    
+    func testFiveMinutesWithOffValues() {
+        clockConverter.stringToReturn = "OOOOOOOOOOO"
+        sut.set(with: Just<Date>(Date()).eraseToAnyPublisher())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            XCTAssertEqual(self.sut.fiveMinutes, [LampColour](repeating: .off, count: 11))
+        }
+    }
+    
+    func testFiveMinutesWithMixedValues() {
+        clockConverter.stringToReturn = "YYRYYRYOOOO"
+        sut.set(with: Just<Date>(Date()).eraseToAnyPublisher())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            let expectedOutputs: [LampColour] = [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .off, .off, .off, .off]
+            XCTAssertEqual(self.sut.fiveMinutes, expectedOutputs)
+        }
+    }
 
 }

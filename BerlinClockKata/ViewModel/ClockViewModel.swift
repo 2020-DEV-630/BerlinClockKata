@@ -3,6 +3,7 @@ import Combine
 
 enum LampColour: Character {
     case yellow = "Y"
+    case red = "R"
     case off = "O"
 }
 
@@ -11,6 +12,7 @@ class ClockViewModel: ObservableObject {
     var datePublisher: AnyCancellable?
     
     @Published var singleMinutes: [LampColour] = []
+    @Published var fiveMinutes: [LampColour] = []
     
     init(converter: ClockConverterType) {
         self.clockConverter = converter
@@ -24,6 +26,8 @@ class ClockViewModel: ObservableObject {
         datePublisher = publisher.sink { (date) in
             let singleMinutesString = self.clockConverter.singleMinutes(for: date)
             self.singleMinutes = singleMinutesString.map { LampColour(rawValue: $0) ?? .off }
+            let fiveMinutesString = self.clockConverter.fiveMinutes(for: date)
+            self.fiveMinutes = fiveMinutesString.map { LampColour(rawValue: $0) ?? .off }
         }
     }
 }

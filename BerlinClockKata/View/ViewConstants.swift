@@ -9,6 +9,8 @@ enum ViewConstants {
         switch lampColour {
         case .yellow:
             return .yellow
+        case .red:
+            return .red
         case .off:
             return .gray
         }
