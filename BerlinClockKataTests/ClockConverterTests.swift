@@ -143,6 +143,12 @@ class ClockConverterTests: XCTestCase {
         let seconds = sut.seconds(for: zeroDate)
         XCTAssertEqual(seconds, "Y")
     }
+    
+    func testSecondsWithNonZeroValue() {
+        let nonZeroDate = makeDateWithTime(hours: 23, minutes: 59, seconds: 59)
+        let seconds = sut.seconds(for: nonZeroDate)
+        XCTAssertEqual(seconds, "O")
+    }
 }
 
 extension ClockConverterTests {

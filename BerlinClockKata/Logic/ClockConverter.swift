@@ -75,6 +75,13 @@ struct ClockConverter: ClockConverterType {
     }
     
     func seconds(for date: Date) -> String {
-        return "Y"
+        let calendar = Calendar.current
+        let dateComponents = calendar.dateComponents([.second], from: date)
+        
+        guard let seconds = dateComponents.second else {
+            preconditionFailure("date has no seconds")
+        }
+        
+        return seconds % 2 == 0 ? "Y" : "O"
     }
 }
