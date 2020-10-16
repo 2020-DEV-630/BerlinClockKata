@@ -1,12 +1,14 @@
 import SwiftUI
+import Combine
 
 @main
 struct BerlinClockKataApp: App {
     static let viewModel: ClockViewModel = {
         let viewModel = ClockViewModel(converter: ClockConverter())
-        let datePublisher = Timer.publish(every: 0.5, on: .main, in: .common)
-        viewModel.set(with: datePublisher.eraseToAnyPublisher())
-        let _ = datePublisher.connect()
+        let datePublisher = Deferred { Just(Date()) }
+            .append(Timer.publish(every: 0.5, on: .main, in: .common).autoconnect())
+            .eraseToAnyPublisher()
+        viewModel.set(with: datePublisher)
         
         return viewModel
     }()
