@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CircularLampView: View {
-    @Binding var lampColour: LampColour
+    var lampColour: LampColour
     
     var body: some View {
         Circle()
@@ -15,6 +15,6 @@ struct CircularLampView: View {
 
 struct CircularLampView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularLampView(lampColour: .constant(.yellow))
+        CircularLampView(lampColour: .yellow)
     }
 }

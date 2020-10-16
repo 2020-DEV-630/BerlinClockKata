@@ -6,12 +6,12 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            CircularLampView(lampColour: $viewModel.seconds)
+            CircularLampView(lampColour: viewModel.seconds)
                 .frame(height: ViewConstants.circularLampHeight)
-            LampRowView(lampColours: $viewModel.fiveHours)
-            LampRowView(lampColours: $viewModel.singleHours)
-            LampRowView(lampColours: $viewModel.fiveMinutes)
-            LampRowView(lampColours: $viewModel.singleMinutes)
+            LampRowView(lampColours: viewModel.fiveHours)
+            LampRowView(lampColours: viewModel.singleHours)
+            LampRowView(lampColours: viewModel.fiveMinutes)
+            LampRowView(lampColours: viewModel.singleMinutes)
         }
         .padding(.horizontal, 20)
     }

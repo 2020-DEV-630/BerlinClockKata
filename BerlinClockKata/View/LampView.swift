@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LampView: View {
-    @Binding var lampColour: LampColour
+    var lampColour: LampColour
     
     var body: some View {
         RoundedRectangle(cornerRadius: ViewConstants.cornerRadius)
@@ -15,6 +15,6 @@ struct LampView: View {
 
 struct LampView_Previews: PreviewProvider {
     static var previews: some View {
-        LampView(lampColour: .constant(.yellow))
+        LampView(lampColour: .yellow)
     }
 }

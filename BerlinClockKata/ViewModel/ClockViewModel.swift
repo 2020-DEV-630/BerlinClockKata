@@ -7,15 +7,38 @@ enum LampColour: Character {
     case off = "O"
 }
 
+fileprivate extension String {
+    var lampColours: [LampColour] {
+        self.map { LampColour(rawValue: $0) ?? .off }
+    }
+    
+    var asLampColour: LampColour {
+        let lampColours = self.compactMap { LampColour(rawValue: $0) }
+        return lampColours.first ?? .off
+    }
+}
+
 class ClockViewModel: ObservableObject {
     let clockConverter: ClockConverterType
     var datePublisher: AnyCancellable?
     
-    @Published var singleMinutes: [LampColour] = []
-    @Published var fiveMinutes: [LampColour] = []
-    @Published var singleHours: [LampColour] = []
-    @Published var fiveHours: [LampColour] = []
-    @Published var seconds: LampColour = .off
+    @Published private var date: Date?
+    
+    var singleMinutes: [LampColour] {
+        return date.map(clockConverter.singleMinutes(for:))?.lampColours ?? []
+    }
+    var fiveMinutes: [LampColour] {
+        return date.map(clockConverter.fiveMinutes(for:))?.lampColours ?? []
+    }
+    var singleHours: [LampColour] {
+        return date.map(clockConverter.singleHours(for:))?.lampColours ?? []
+    }
+    var fiveHours: [LampColour] {
+        return date.map(clockConverter.fiveHours(for:))?.lampColours ?? []
+    }
+    var seconds: LampColour {
+        return date.map(clockConverter.seconds(for:))?.asLampColour ?? .off
+    }
     
     init(converter: ClockConverterType) {
         self.clockConverter = converter
@@ -27,16 +50,7 @@ class ClockViewModel: ObservableObject {
     
     func set(with publisher: AnyPublisher<Date, Never>) {
         datePublisher = publisher.sink { (date) in
-            let singleMinutesString = self.clockConverter.singleMinutes(for: date)
-            self.singleMinutes = singleMinutesString.map { LampColour(rawValue: $0) ?? .off }
-            let fiveMinutesString = self.clockConverter.fiveMinutes(for: date)
-            self.fiveMinutes = fiveMinutesString.map { LampColour(rawValue: $0) ?? .off }
-            let singleHoursString = self.clockConverter.singleHours(for: date)
-            self.singleHours = singleHoursString.map { LampColour(rawValue: $0) ?? .off }
-            let fiveHoursString = self.clockConverter.fiveHours(for: date)
-            self.fiveHours = fiveHoursString.map { LampColour(rawValue: $0) ?? .off }
-            let secondsString = self.clockConverter.seconds(for: date)
-            self.seconds = secondsString.map { LampColour(rawValue: $0) ?? .off }.first ?? .off
+            self.date = date
         }
     }
 }
