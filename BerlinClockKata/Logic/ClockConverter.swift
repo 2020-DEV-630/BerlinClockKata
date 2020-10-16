@@ -3,6 +3,7 @@ import Foundation
 protocol ClockConverterType {
     func singleMinutes(for date: Date) -> String
     func fiveMinutes(for date: Date) -> String
+    func singleHours(for date: Date) -> String
 }
 
 struct ClockConverter: ClockConverterType {
