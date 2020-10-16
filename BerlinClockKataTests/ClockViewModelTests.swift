@@ -8,6 +8,10 @@ struct MockClockConverter: ClockConverterType {
     func singleMinutes(for date: Date) -> String {
         return stringToReturn
     }
+    
+    func fiveMinutes(for date: Date) -> String {
+        return stringToReturn
+    }
 }
 
 class ClockViewModelTests: XCTestCase {

@@ -2,6 +2,7 @@ import Foundation
 
 protocol ClockConverterType {
     func singleMinutes(for date: Date) -> String
+    func fiveMinutes(for date: Date) -> String
 }
 
 struct ClockConverter: ClockConverterType {
@@ -19,5 +20,9 @@ struct ClockConverter: ClockConverterType {
         
         return String(repeating: "Y", count: singleMinuteCount)
             + String(repeating: "O", count: ClockConverter.singleMinuteLampCount - singleMinuteCount)
+    }
+    
+    func fiveMinutes(for date: Date) -> String {
+        return "OOOOOOOOOOO"
     }
 }
